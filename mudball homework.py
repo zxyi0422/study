@@ -73,7 +73,8 @@ def get_user_input(name):
             angle = float(input(name + " move the gun at what angle? "))
         except ValueError:
             print("you should input a number, please try again")
-    print("ad")
+            logger.error("ValueError")
+    print("ed")
     return psi, angle
 
 
