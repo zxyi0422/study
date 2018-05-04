@@ -32,11 +32,7 @@ fh.setFormatter(formatter)
 logger.addHandler(ch)
 logger.addHandler(fh)
 #"application" code
-logger.debug("debug message")
-logger.info("info message")
-logger.warn("warn message")
-logger.error("error message")
-logger.critical("critical message")
+
 
 
 
@@ -45,7 +41,7 @@ def print_instructions():
 
     # You can use the triple-quote string in a print statement to
     # print multiple lines.
-    print("using print_instructions...")
+    logger.debug("using print_instructions...")
     print("""
 Welcome to Mudball! The idea is to hit the other player with a mudball.
 Enter your angle (in degrees) and the amount of PSI to charge your gun
@@ -56,7 +52,7 @@ with.
 
 def calculate_distance(psi, angle_in_degrees):
     """ Calculate the distance the mudball flies. """
-    print("using calculate_distance...")
+    logger.debug("using calculate_distance...")
     angle_in_radians = math.radians(angle_in_degrees)
     distance = .5 * psi ** 2 * math.sin(angle_in_radians) * math.cos(angle_in_radians)
     return distance
@@ -68,7 +64,7 @@ def get_user_input(name):
     # Later on in the 'exceptions' chapter, we will learn how to modify
     # this code to not crash the game if the user types in something that
     # isn't a valid number.
-    print("using get_user_input...")
+    logger.debug("using get_user_input...")
     psi=None
     angle=None
     while psi is None or angle is None:
@@ -83,7 +79,7 @@ def get_user_input(name):
 
 def get_player_names():
     """ Get a list of names from the players. """
-    print("using get_player_names...")
+    logger.debug("using get_player_names...")
     print("Enter player names. Enter as many players as you like.")
     done = False
     players = []
@@ -102,7 +98,7 @@ def process_player_turn(player_name, distance_apart):
     """ The code runs the turn for each player.
     If it returns False, keep going with the game.
     If it returns True, someone has won, so stop. """
-    print("using  process_player_turn...")
+    logger.debug("using  process_player_turn...")
     psi, angle = get_user_input(player_name)
 
     distance_mudball = calculate_distance(psi, angle)
@@ -127,7 +123,7 @@ def main():
     """ Main program. """
 
     # Get the game started.
-    print("using main...")
+    logger.debug("using main...")
     print_instructions()
     player_names = get_player_names()
     distance_apart = random.randrange(50, 150)
@@ -145,4 +141,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
